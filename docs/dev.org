@@ -156,6 +156,8 @@ In addition you will need a bunch of stuff:
   - Paraview with pvpython
   - GNU Plot
   - wget
+  - https://github.com/richmit/MRKISS
+  - https://github.com/richmit/ex-VTK
 
 Environments I have used successfully:
  - Windows ::
