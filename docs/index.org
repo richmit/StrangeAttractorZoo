@@ -1,6 +1,6 @@
 # -*- Mode:Org; Coding:utf-8; fill-column:158 -*-
 # ######################################################################################################################################################.H.S.##
-# FILE:        curve.org
+# FILE:        index.org
 #+TITLE:       Mitch's Strange Attractor Zoo
 #+AUTHOR:      Mitch Richling
 #+EMAIL:       http://www.mitchr.me/
