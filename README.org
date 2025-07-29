@@ -10,6 +10,11 @@ in this JSON file:
 
 https://github.com/richmit/StrangeAttractorZoo/blob/main/src/zoo.json
 
+If you would like to play with curve data, you can find
+[[https://github.com/richmit/StrangeAttractorZoo/tree/main/CSVs][CSVs/]]
+and
+[[https://github.com/richmit/StrangeAttractorZoo/tree/main/VTUs][VTUs/]].
+
 The build system to create the web page is in the
 [[https://github.com/richmit/StrangeAttractorZoo/tree/main/src][src/]]
 folder, but I have to warn you it is probably difficult to get working
