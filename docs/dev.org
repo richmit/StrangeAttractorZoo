@@ -1,0 +1,164 @@
+# -*- Mode:Org; Coding:utf-8; fill-column:158 -*-
+# ######################################################################################################################################################.H.S.##
+# FILE:        index.org
+#+TITLE:       Mitch's Strange Attractor Zoo Development
+#+AUTHOR:      Mitch Richling
+#+EMAIL:       http://www.mitchr.me/
+#+DESCRIPTION: StrangeAttractorZoo
+#+KEYWORDS:    MRKISS
+#+LANGUAGE:    en
+#+OPTIONS:     num:t toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t skip:nil d:nil todo:t pri:nil H:5 p:t author:t html-scripts:nil 
+# FIXME: When uncommented the following line will render latex equations as images embedded into exported HTML, when commented MathJax will be used
+# #+OPTIONS:     tex:dvipng
+# FIXME: Select ONE of the three TODO lines below
+# #+SEQ_TODO:    ACTION:NEW(t!) ACTION:ASSIGNED(a!@) ACTION:WORK(w!) ACTION:HOLD(h@) | ACTION:FUTURE(f) ACTION:DONE(d!) ACTION:CANCELED(c!)
+# #+SEQ_TODO:    TODO:NEW(T!)                        TODO:WORK(W!)   TODO:HOLD(H@)   |                  TODO:DONE(D!)   TODO:CANCELED(C!)
+#+SEQ_TODO:    TODO:NEW(t)                         TODO:WORK(w)    TODO:HOLD(h)    | TODO:FUTURE(f)   TODO:DONE(d)    TODO:CANCELED(c)
+#+PROPERTY: header-args :eval never-export
+#+HTML_HEAD: <style>body { width: 95%; margin: 2% auto; font-size: 18px; line-height: 1.4em; font-family: Georgia, serif; color: black; background-color: white; }</style>
+# Change max-width to get wider output -- also note #content style below
+#+HTML_HEAD: <style>body { min-width: 500px; max-width: 1024px; }</style>
+#+HTML_HEAD: <style>h1,h2,h3,h4,h5,h6 { color: #A5573E; line-height: 1em; font-family: Helvetica, sans-serif; }</style>
+#+HTML_HEAD: <style>h1,h2,h3 { line-height: 1.4em; }</style>
+#+HTML_HEAD: <style>h1.title { font-size: 3em; }</style>
+#+HTML_HEAD: <style>.subtitle { font-size: 0.6em; }</style>
+#+HTML_HEAD: <style>h4,h5,h6 { font-size: 1em; }</style>
+#+HTML_HEAD: <style>.org-src-container { border: 1px solid #ccc; box-shadow: 3px 3px 3px #eee; font-family: Lucida Console, monospace; font-size: 80%; margin: 0px; padding: 0px 0px; position: relative; }</style>
+#+HTML_HEAD: <style>.org-src-container>pre { line-height: 1.2em; padding-top: 1.5em; margin: 0.5em; background-color: #404040; color: white; overflow: auto; }</style>
+#+HTML_HEAD: <style>.org-src-container>pre:before { display: block; position: absolute; background-color: #b3b3b3; top: 0; right: 0; padding: 0 0.2em 0 0.4em; border-bottom-left-radius: 8px; border: 0; color: white; font-size: 100%; font-family: Helvetica, sans-serif;}</style>
+#+HTML_HEAD: <style>pre.example { white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -o-pre-wrap; font-family: Lucida Console, monospace; font-size: 80%; background: #404040; color: white; display: block; padding: 0em; border: 2px solid black; }</style>
+#+HTML_HEAD: <style>blockquote { margin-bottom: 0.5em; padding: 0.5em; background-color: #FFF8DC; border-left: 2px solid #A5573E; border-left-color: rgb(255, 228, 102); display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 5em; margin-inline-end: 5em; } </style>
+# Change the following to get wider output -- also note body style above
+#+HTML_HEAD: <style>#content { max-width: 60em; }</style>
+#+HTML_LINK_HOME: https://www.mitchr.me/
+#+HTML_LINK_UP: https://github.com/richmit/StrangeAttractorZoo/
+# ######################################################################################################################################################.H.E.##
+
+
+This page is for people who really want to try and get the automation in [[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/][src/]] working on
+their system.  First let's take a look at the overall data flow:
+
+#+BEGIN_SRC dot :file ./pics/dataflow.svg  :cmdline -Kdot -Tsvg
+digraph {
+
+    "ODE Solver Template\n(curve_template.f90)" [shape="note"];
+    "GNUplot Template\n(curve_template.gplt)" [shape="note"];
+    "Paraview Template\n(curve_template.py)" [shape="note"];
+    "ZOO JSON\n(zoo.json)" [shape="note"];
+   
+    "json2fortran.rb" [shape="box3d"];
+
+    "MRKISS\n(github.com/richmit/)" [shape="component"];
+    "ODE Solver Programs\n(curve_*.f90)" [shape="folder"];
+    "GNUplot Input\n(curve_*.gplt)" [shape="folder"];
+    "Paraview Batch\n(curve_batch_*.py)" [shape="folder"];
+    "Paraview Glance\n(ParaViewGlance.html)" [shape="note"];
+    "Paraview Interactive\n(curve_*.py)" [shape="folder"];
+
+    "fortran compile/run" [shape="box3d"];
+    "GNUplot" [shape="box3d"];
+
+    "MRKISS\n(github.com/richmit/)" -> "fortran compile/run";
+    "ODE Solver Programs\n(curve_*.f90)" -> "fortran compile/run";
+
+    "CSV Data Files\n(curve_*.csv)" [shape="folder"];
+    "GNU Plot Images\n(curve_gp_*.png)" [shape="folder"];
+
+    "fortran compile/run" -> "CSV Data Files\n(curve_*.csv)";
+    "GNUplot"             -> "GNU Plot Images\n(curve_gp_*.png)";
+    "GNUplot Input\n(curve_*.gplt)" -> "GNUplot";
+
+    "spaceCurveCSVtoVTU.rb" [shape="box3d"];
+
+    "CSV Data Files\n(curve_*.csv)" -> "spaceCurveCSVtoVTU.rb";
+
+    "VTU Data Files\n(curve_*.vtu)" [shape="folder"];
+
+    "spaceCurveCSVtoVTU.rb" -> "VTU Data Files\n(curve_*.vtu)";
+
+    "pvpython" [shape="box3d"];
+
+    "Glance HTML\n(curve_*.html)" [shape="folder"];
+    "Glance DATA\n(curve_*.vtkjs)" [shape="folder"];
+    "Glance Preview\n(curve_pv_*.png)" [shape="folder"];
+
+    
+    "pvpython" -> "Glance HTML\n(curve_*.html)";
+    "pvpython" -> "Glance DATA\n(curve_*.vtkjs)";
+    "pvpython" -> "Glance Preview\n(curve_pv_*.png)";
+
+    "Paraview Glance\n(ParaViewGlance.html)" -> "pvpython";
+    "VTU Data Files\n(curve_*.vtu)" -> "pvpython";
+    "Paraview Batch\n(curve_batch_*.py)" -> "pvpython";
+
+    "Browser" [shape="box3d"];
+
+    "Glance HTML\n(curve_*.html)" -> "Browser";
+    "Glance DATA\n(curve_*.vtkjs)" -> "Browser";
+    "Glance Preview\n(curve_pv_*.png)" -> "Browser";
+
+    "Paraview" [shape="box3d"];
+
+    "Paraview Interactive\n(curve_*.py)" -> "Paraview"
+    "VTU Data Files\n(curve_*.vtu)" -> "Paraview";
+
+    "nomacs" [shape="box3d"];
+    "GNU Plot Images\n(curve_gp_*.png)" -> "nomacs";
+
+    { rank = min;  "ODE Solver Template\n(curve_template.f90)"; "GNUplot Template\n(curve_template.gplt)"; "Paraview Template\n(curve_template.py)"; "ZOO JSON\n(zoo.json)" }
+    { rank = same; "json2fortran.rb"; }
+    { rank = same;  "MRKISS\n(github.com/richmit/)"; "ODE Solver Programs\n(curve_*.f90)"; "GNUplot Input\n(curve_*.gplt)"; "Paraview Batch\n(curve_batch_*.py)"; "Paraview Glance\n(ParaViewGlance.html)"; "Paraview Interactive\n(curve_*.py)"; }
+    { rank = same; "fortran compile/run"; "GNUplot"; }
+    { rank = same; "CSV Data Files\n(curve_*.csv)"; "GNU Plot Images\n(curve_gp_*.png)"; }
+    { rank = same; "spaceCurveCSVtoVTU.rb"; }
+    { rank = same; "VTU Data Files\n(curve_*.vtu)"; }
+    { rank = same; "Glance HTML\n(curve_*.html)"; "Glance DATA\n(curve_*.vtkjs)"; "Glance Preview\n(curve_pv_*.png)"; }
+
+    { rank = max;  "Browser"; "Paraview"; "nomacs" }
+
+    "ODE Solver Template\n(curve_template.f90)" -> "json2fortran.rb";
+    "GNUplot Template\n(curve_template.gplt)" -> "json2fortran.rb";
+    "Paraview Template\n(curve_template.py)" -> "json2fortran.rb";
+    "ZOO JSON\n(zoo.json)" -> "json2fortran.rb";
+
+    "json2fortran.rb" -> "ODE Solver Programs\n(curve_*.f90)";
+    "json2fortran.rb" -> "GNUplot Input\n(curve_*.gplt)";
+    "json2fortran.rb" -> "Paraview Batch\n(curve_batch_*.py)";
+    "json2fortran.rb" -> "Paraview Interactive\n(curve_*.py)";
+
+}
+#+END_SRC
+
+#+ATTR_HTML: :width 90% :align center
+#+RESULTS:
+[[file:./pics/dataflow.svg]]
+
+Everything is generated from the code in the [[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/][src/]] directory; however, the makefile and
+templates contain some bits that will need to be adjusted:
+
+ - [[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/makefile][makefile]] ::
+   Several variables need to be adjusted:
+   - ~IMG_VIEWER~ On windows you can use "~explorer~".
+   - ~CSV_2_VTU~ You can find this script [[https://github.com/richmit/ex-VTK/blob/main/xml_files/spaceCurveCSVtoVTU.rb][here]]
+   - ~PVP~ This ships with Paraview
+   - ~MRKISS_PATH~ Consult the [[https://github.com/richmit/MRKISS][MRKISS]] documentation
+ - [[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/curve_template.py][curve_template.py]] ::
+   Paraview uses absolute paths in the API.  So you will need to correct the path names in the Python script to your system.  In particular the following lines require adjustment:
+   - ~curveMJR = XMLUnstructuredGridReader(registrationName='curve_NAME.vtu', FileName...~
+   - ~SaveScreenshot("C:/Users/richmit/MJR/world/my_prog/StrangeAttractorZoo/src/curve...~
+   - ~ExportView('C:/Users/richmit/MJR/world/my_prog/StrangeAttractorZoo/src/curve_NAM...~
+
+In addition you will need a bunch of stuff:
+  - bash
+  - GNU make
+  - Fortran compiler (Consult the [[https://github.com/richmit/MRKISS][MRKISS]] documentation for more)
+  - Ruby 3
+  - Paraview with pvpython
+  - GNU Plot
+  - wget
+
+Environments I have used successfully:
+ - Windows ::
+   On Windows I use MSYS2 for a unix development environment and the standard Paraview installer for Windows.
+ - Linux ::
+   Debian 13.
