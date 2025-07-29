@@ -3,7 +3,7 @@ The primary source code for StrangeAttractorZoo.
 
 Only one file here is probably of interest to most people:
 
-  -[[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/README.org][zoo.json]] ::
+  - [[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/README.org][zoo.json]] ::
     This JSON file has the definitions for all the strange
     attractors.  Equations, initial conditions, step sizes, curve
     lengths, etc...
