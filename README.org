@@ -1,3 +1,22 @@
 
 
-The future home of Mitch's Strange Attractor Zoo!
+The home of Mitch's Strange Attractor Zoo!
+
+The zoo is here https://richmit.github.io/StrangeAttractorZoo/
+
+If you are interested in writing your own code, then you can find
+things like attractor formulas, initial values, and integration ranges
+in this JSON file:
+
+https://github.com/richmit/StrangeAttractorZoo/blob/main/src/zoo.json
+
+The build system to create the web page is in the
+[[https://github.com/richmit/StrangeAttractorZoo/tree/main/src][src/]]
+folder, but I have to warn you it is probably difficult to get working
+outside of my environment.  Still I wrote up
+[[https://richmit.github.io/StrangeAttractorZoo/dev.html][some notes]]
+on that if you really want to try.
+
+Lastly there are a few [[https://github.com/richmit/StrangeAttractorZoo/tree/main/maple][Maple worksheets]] for various attractors. 
+
+
