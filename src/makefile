@@ -53,7 +53,10 @@ curve.mk : json2fortran.rb makefile zoo.json
 docs : curve_pv_png curve_gp_png
 	cp curve_*.vtkjs curve_*.html ../docs/pv/
 	cp curve_pv_*.png ../docs/pics/pv/
-    cp curve_gp_*.png ../docs/pics/gp/	
+	cp curve_gp_*.png ../docs/pics/gp/	
+
+ParaViewGlance.html : 
+	wget 'https://kitware.github.io/glance/app/ParaViewGlance.html'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 clean : clean_multi_mrkiss
