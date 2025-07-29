@@ -1,2 +1,15 @@
 
 The primary source code for StrangeAttractorZoo.
+
+Only one file here is probably of interest to most people:
+
+  -[[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/README.org][zoo.json]] ::
+    This JSON file has the definitions for all the strange
+    attractors.  Equations, initial conditions, step sizes, curve
+    lengths, etc...
+
+The rest of the code here is very much dependent up on a pretty
+complex software stack and some details of my personal system
+configuration.
+
+I hope to write up a "how to build" document at some point.
