@@ -1,0 +1,10 @@
+*~
+/src/*.mod
+/src/*.obj
+/src/*.o
+/src/*.vtkjs
+/src/*.html
+/src/*.vtu
+/src/*.csv
+/src/*.exe
+/src/ParaViewGlance.html
