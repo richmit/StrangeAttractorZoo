@@ -1,3 +1,36 @@
+// -*- Mode:javascript; Coding:us-ascii-unix; fill-column:158 -*-
+/*******************************************************************************************************************************************************.H.S.**/
+/**
+ @file      zoo.json
+ @author    Mitch Richling http://www.mitchr.me/
+ @brief     The data from which everything in this repo is generated!@EOL
+ @std       JSON
+ @see       https://github.com/richmit/StrangeAttractorZoo/
+ @copyright 
+  @parblock
+  Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+  1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following disclaimer.
+  
+  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+  
+  3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software
+     without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+  DAMAGE.
+  @endparblock
+*/
+/*******************************************************************************************************************************************************.H.E.**/
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
 { 
   "halvorsen": { "ref":         ["Sprott (2003); Chaos and time-series analysis"],
                  "param_value": [1.4],
@@ -8,7 +41,7 @@
                                  "-a * z - 4 * x - 4 * y - x * x"],
                  "t_max":       200
                },
-  "burke_shaw": { "ref":         ["Robert Shaw (1981); Strange Attractors, Chaotic Behavior, and Information Flow; Zeitschrift Für Naturforschung; A 36 (1); p80-112; zotero://select/items/0_P8Q3BN4T"],
+  "burke_shaw": { "ref":         ["Robert Shaw (1981); Strange Attractors, Chaotic Behavior, and Information Flow; Zeitschrift Fur Naturforschung; A 36 (1); p80-112; zotero://select/items/0_P8Q3BN4T"],
                   "param_names": ["s", "v"],
                   "deq":         ["-s * (x + y)",
                                   "-y - s * x * z",
@@ -26,7 +59,7 @@
                      "y_iv":        [1.0, 1.0, 0.0],
                      "t_max":       600
                    },
-  "bouali2": { "ref":         ["Safieddine Bouali (2012); A Novel Strange Attractor with a Stretched Loop; Nonlinear Dynamics; 70(4); p2375–2381; zotero://select/items/0_2JGB9I2E"],
+  "bouali2": { "ref":         ["Safieddine Bouali (2012); A Novel Strange Attractor with a Stretched Loop; Nonlinear Dynamics; 70(4); p2375-2381; zotero://select/items/0_2JGB9I2E"],
                      "param_names": ["a", "b", "c", "s", "alpha", "beta"],
                      "deq":         ["x * (a - y) + alpha * z", 
                                      "-y * (b - x * x)",
@@ -35,7 +68,7 @@
                      "y_iv":        [0.1, 3.0, 0.2],
                      "t_max":       200
                    },
-  "chen_ueta": { "ref":         ["Chen & Ueta (1999); Yet Another Chaotic Attractor; Int. J. of Bifurcation and Chaos; p1465–1466; zotero://select/items/0_UCSC3Z6A"],
+  "chen_ueta": { "ref":         ["Chen & Ueta (1999); Yet Another Chaotic Attractor; Int. J. of Bifurcation and Chaos; p1465-1466; zotero://select/items/0_UCSC3Z6A"],
                  "param_names": ["a", "b", "c"],
                  "deq":         ["a * (y - x)", 
                                  "(c - a) * x - (x * z) + c * y", 
@@ -45,7 +78,7 @@
                  "t_delta_ini": 0.005,
                  "t_max":       100
                },
-  "chen_lee": { "ref":         ["Chen & Lee (2004); Anti-Control of Chaos in Rigid Body Motion; Chaos, Solitons & Fractals 21 (4); 957–965"],
+  "chen_lee": { "ref":         ["Chen & Lee (2004); Anti-Control of Chaos in Rigid Body Motion; Chaos, Solitons & Fractals 21 (4); 957-965"],
                 "param_value": [5.0, -10.0, -0.38],
                 "param_names": ["a", "b", "c"],
                 "y_iv":        [1.0, 1.0, 1.0],
@@ -177,7 +210,7 @@
                 "deq":         ["-mu * x + z * y", "-mu * y + x * (z - a)", "1 - x * y"],
                 "t_max":       500
               },
-  "qi_chen": { "ref":         ["Qi, Chen, Du, Chen, Yuan (2005); Analysis of a new chaotic system;. Phys. A; 352(2–4); p295-308"],
+  "qi_chen": { "ref":         ["Qi, Chen, Du, Chen, Yuan (2005); Analysis of a new chaotic system;. Phys. A; 352(2-4); p295-308"],
                "param_value": [38, 2, 80],
                "param_names": ["a", "b", "c"],
                "y_iv":        [1.0, 1.0, 1.0],
