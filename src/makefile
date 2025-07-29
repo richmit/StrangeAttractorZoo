@@ -3,9 +3,8 @@
 ##
 # @file      makefile
 # @author    Mitch Richling http://www.mitchr.me/
-# @brief     Build MRKISS examples.@EOL
 # @std       GNUmake
-# @see       https://github.com/richmit/MRKISS/
+# @see       https://github.com/richmit/StrangeAttractorZoo/
 # @copyright 
 #  @parblock
 #  Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
