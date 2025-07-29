@@ -41,7 +41,7 @@ from paraview.simple import *
 paraview.simple._DisableFirstRenderCameraReset()
 
 # create a new 'XML Unstructured Grid Reader'
-curveMJR = XMLUnstructuredGridReader(registrationName='curve_NAME.vtu', FileName=['C:\\Users\\richmit\\MJR\\world\\my_prog\\strange_zoo\\src\\curve_NAME.vtu'])
+curveMJR = XMLUnstructuredGridReader(registrationName='curve_NAME.vtu', FileName=['C:\\Users\\richmit\\MJR\\world\\my_prog\\StrangeAttractorZoo\\src\\curve_NAME.vtu'])
 
 # Properties modified on curveMJR
 curveMJR.TimeArray = 'None'
@@ -114,7 +114,7 @@ renderView1.ResetCamera()
 # RenderAllViews()
 
 # Save a screenshot with ste resolution and background color
-SaveScreenshot("C:/Users/richmit/MJR/world/my_prog/strange_zoo/src/curve_pv_NAME.png", renderView1, ImageResolution=[600, 600])
+SaveScreenshot("C:/Users/richmit/MJR/world/my_prog/StrangeAttractorZoo/src/curve_pv_NAME.png", renderView1, ImageResolution=[600, 600])
 
 # Export to HTML for ParaView Glance
-ExportView('C:/Users/richmit/MJR/world/my_prog/strange_zoo/src/curve_NAME.vtkjs', view=renderView1, ParaViewGlanceHTML='C:\\Users\\richmit\\MJR\\world\\my_prog\\strange_zoo\\src\\ParaViewGlance.html')
+ExportView('C:/Users/richmit/MJR/world/my_prog/StrangeAttractorZoo/src/curve_NAME.vtkjs', view=renderView1, ParaViewGlanceHTML='C:\\Users\\richmit\\MJR\\world\\my_prog\\StrangeAttractorZoo\\src\\ParaViewGlance.html')
