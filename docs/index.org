@@ -34,7 +34,7 @@
 #+HTML_LINK_UP: https://github.com/richmit/StrangeAttractorZoo/
 # ######################################################################################################################################################.H.E.##
 
-This page has renderings of some of my favorite strange attractors.  Click any of the images below and you will be taken to an interactive visitation
+This page has renderings of some of my favorite strange attractors.  Click any of the images below and you will be taken to an interactive visualization
 application.
 
 The attractors here are all defined in the JSON file [[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/zoo.json][zoo.json]].  The equations were
