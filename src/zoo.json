@@ -1,32 +1,32 @@
 // -*- Mode:javascript; Coding:us-ascii-unix; fill-column:158 -*-
 /*******************************************************************************************************************************************************.H.S.**/
 /**
- @file      zoo.json
- @author    Mitch Richling http://www.mitchr.me/
- @brief     The data from which everything in this repo is generated!@EOL
- @std       JSON
- @see       https://github.com/richmit/StrangeAttractorZoo/
- @copyright
-  @parblock
-  Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
+   @file      zoo.json
+   @author    Mitch Richling http://www.mitchr.me/
+   @brief     The data from which everything in this repo is generated!@EOL
+   @std       JSON
+   @see       https://github.com/richmit/StrangeAttractorZoo/
+   @copyright
+   @parblock
+   Copyright (c) 2025, Mitchell Jay Richling <http://www.mitchr.me/> All rights reserved.
 
-  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-  1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following disclaimer.
+   1. Redistributions of source code must retain the above copyright notice, this list of conditions, and the following disclaimer.
 
-  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following disclaimer in the documentation
-     and/or other materials provided with the distribution.
+   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions, and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
 
-  3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software
-     without specific prior written permission.
+   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software
+   without specific prior written permission.
 
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
-  DAMAGE.
-  @endparblock
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+   DAMAGE.
+   @endparblock
 */
 /*******************************************************************************************************************************************************.H.E.**/
 
@@ -51,23 +51,23 @@
                   "t_max":       100
                 },
   "bouali1": { "ref":         ["Safieddine Bouali (2014); A 3D Strange Attractor with a Distinctive Silhouette. The Butterfly Effect Revisited; arXiv:1311.6128; zotero://select/items/0_SY8CDQP6"],
-                     "param_names": ["gamma", "mu", "alpha", "beta"],
-                     "deq":         ["alpha * x * (1 - y) - beta * z",
-                                     "-gamma * y * (1 - x * x)",
-                                     "mu * x"],
-                     "param_value": [1.0, 0.001, 3.0, 2.2],
-                     "y_iv":        [1.0, 1.0, 0.0],
-                     "t_max":       600
-                   },
+               "param_names": ["gamma", "mu", "alpha", "beta"],
+               "deq":         ["alpha * x * (1 - y) - beta * z",
+                               "-gamma * y * (1 - x * x)",
+                               "mu * x"],
+               "param_value": [1.0, 0.001, 3.0, 2.2],
+               "y_iv":        [1.0, 1.0, 0.0],
+               "t_max":       600
+             },
   "bouali2": { "ref":         ["Safieddine Bouali (2012); A Novel Strange Attractor with a Stretched Loop; Nonlinear Dynamics; 70(4); p2375-2381; zotero://select/items/0_2JGB9I2E"],
-                     "param_names": ["a", "b", "c", "s", "alpha", "beta"],
-                     "deq":         ["x * (a - y) + alpha * z",
-                                     "-y * (b - x * x)",
-                                     "-x * (c - s * z) - beta * z"],
-                     "param_value": [4.0, 1.0, 1.4, 2.8, 1.0, 1.0],
-                     "y_iv":        [0.1, 3.0, 0.2],
-                     "t_max":       200
-                   },
+               "param_names": ["a", "b", "c", "s", "alpha", "beta"],
+               "deq":         ["x * (a - y) + alpha * z",
+                               "-y * (b - x * x)",
+                               "-x * (c - s * z) - beta * z"],
+               "param_value": [4.0, 1.0, 1.4, 2.8, 1.0, 1.0],
+               "y_iv":        [0.1, 3.0, 0.2],
+               "t_max":       200
+             },
   "chen_ueta": { "ref":         ["Chen & Ueta (1999); Yet Another Chaotic Attractor; Int. J. of Bifurcation and Chaos; p1465-1466; zotero://select/items/0_UCSC3Z6A"],
                  "param_names": ["a", "b", "c"],
                  "deq":         ["a * (y - x)",
@@ -117,8 +117,8 @@
                "param_value": [1e-05, 0.1, 1.0],
                "param_names": ["a", "b", "c"],
                "y_iv":        [0.0, -10.0, 0.1],
-               "deq":         ["(1 / b - a) * x + x * y + z", 
-                               "-b * y - x * x", 
+               "deq":         ["(1 / b - a) * x + x * y + z",
+                               "-b * y - x * x",
                                "-x - c * z"],
                "t_max":       500
              },
@@ -126,8 +126,8 @@
                 "param_value": [0.95, 0.7, 0.6, 3.5, 0.25, 0.1],
                 "param_names": ["alpha", "beta", "lmbda", "omega", "rho", "epsilon"],
                 "y_iv":        [0.1, 0.0, 0.0],
-                "deq":         ["(z - beta) * x - omega * y", 
-                                "omega * x + (z - beta) * y", 
+                "deq":         ["(z - beta) * x - omega * y",
+                                "omega * x + (z - beta) * y",
                                 "lmbda + alpha * z - (z**3 / 3) - (x**2 + y**2) * (1 + rho * z) + epsilon * z * x**3"],
                 "t_max":       200
               },
@@ -136,7 +136,7 @@
                       "param_names": ["alpha", "beta"],
                       "y_iv":        [0.349, 0.0, -0.160],
                       "deq":         ["-alpha * x + y + 10 * y * z",
-                                      "-x - 0.4 * y + 5 * x * z", 
+                                      "-x - 0.4 * y + 5 * x * z",
                                       "beta * z - 5 * x * y"],
                       "t_max":       500,
                       "vrot":        70,
@@ -146,8 +146,8 @@
                    "param_value": [1.0],
                    "param_names": ["a"],
                    "y_iv":        [0.1, 0.0, -0.1],
-                   "deq":         ["a * y", 
-                                   "-x + y * z", 
+                   "deq":         ["a * y",
+                                   "-x + y * z",
                                    "1 - y * y"],
                    "t_max":       300
                  },
@@ -156,7 +156,7 @@
                             "param_names": ["alpha", "gamma"],
                             "y_iv":        [-1.0, 0.0, 0.5],
                             "deq":         ["y * (z - 1 + x * x) + gamma * x",
-                                            "x * (3 * z + 1 - x * x) + gamma * y", 
+                                            "x * (3 * z + 1 - x * x) + gamma * y",
                                             "-2 * z * (alpha + x * y)"],
                             "t_max":       500,
                             "vrot":        60,
@@ -167,7 +167,7 @@
               "param_names": ["a", "c", "d", "e", "f"],
               "y_iv":        [0.1, 0.0, 0.1],
               "deq":         ["a*(y-x)+d*x*z",
-                              "f*y-x*z", 
+                              "f*y-x*z",
                               "c*z+x*y-e*x*x"],
               "t_delta_ini": 0.001,
               "t_max":       100
@@ -176,8 +176,8 @@
               "param_value": [40, 1.833, 55, 0.16, 0.65, 20],
               "param_names": ["a", "b", "c", "d", "e", "f"],
               "y_iv":        [0.1, 0.0, 0.1],
-              "deq":         ["a*(y-x)+d*x*z", 
-                              "c*x+f*y-x*z", 
+              "deq":         ["a*(y-x)+d*x*z",
+                              "c*x+f*y-x*z",
                               "b*z+x*y-e*x*x"],
               "t_delta_ini": 0.001,
               "t_max":       50,
@@ -187,8 +187,8 @@
                 "param_value": [0.2, -0.01, 1.0, -0.4, -1.0, -1.0],
                 "param_names": ["a", "b", "c", "d", "e", "f"],
                 "y_iv":        [0.5, 0.1, 0.1],
-                "deq":         ["a * x + c * y * z", 
-                                "b * x + d * y - x * z", 
+                "deq":         ["a * x + c * y * z",
+                                "b * x + d * y - x * z",
                                 "e * z + f * x * y"],
                 "t_max":       1000
               },
@@ -196,8 +196,8 @@
               "param_value": [0.1],
               "param_names": ["b"],
               "y_iv":        [0.1, 0.0, 0.1],
-              "deq":         ["sin(y) - b * x", 
-                              "sin(z) - b * y", 
+              "deq":         ["sin(y) - b * x",
+                              "sin(z) - b * y",
                               "sin(x) - b * z"],
               "t_delta_ini": 0.05,
               "t_max":       5000,
@@ -209,8 +209,8 @@
                        "param_value": [0.45, 0.75],
                        "param_names": ["a", "B"],
                        "y_iv":        [-1.0, 2.0, 1.0],
-                       "deq":         ["y", 
-                                       "x - B * y - x * z", 
+                       "deq":         ["y",
+                                       "x - B * y - x * z",
                                        "-a * z + x * x"],
                        "t_max":       300
                      },
@@ -218,8 +218,8 @@
                  "param_value": [2.0, 6.7],
                  "param_names": ["k", "alpha"],
                  "y_iv":        [1.0, 0.0, 4.5],
-                 "deq":         ["-k * x + alpha * y - y * z", 
-                                 "x", 
+                 "deq":         ["-k * x + alpha * y - y * z",
+                                 "x",
                                  "-z + y * y"],
                  "t_max":       500
                },
@@ -227,8 +227,8 @@
                "param_value": [0.4, 0.3],
                "param_names": ["a", "b"],
                "y_iv":        [1.0, -1.0, 1.0],
-               "deq":         ["-x + y + y * z", 
-                               "-x - y + a * x * z", 
+               "deq":         ["-x + y + y * z",
+                               "-x - y + a * x * z",
                                "z - b * x * y"],
                "t_max":       500
              },
@@ -236,8 +236,8 @@
                "param_value": [0.2, 0.2, 5.7],
                "param_names": ["a", "b", "c"],
                "y_iv":        [0.1, 0.0, -0.1],
-               "deq":         ["-(y + z)", 
-                               "x + a * y", 
+               "deq":         ["-(y + z)",
+                               "x + a * y",
                                "b + z * (x - c)"],
                "t_max":       400,
                "vrot":        0,
@@ -247,8 +247,8 @@
                 "param_value": [5.0, 2.0],
                 "param_names": ["a", "mu"],
                 "y_iv":        [-0.7, 0.0, 5.0],
-                "deq":         ["-mu * x + z * y", 
-                                "-mu * y + x * (z - a)", 
+                "deq":         ["-mu * x + z * y",
+                                "-mu * y + x * (z - a)",
                                 "1 - x * y"],
                 "t_max":       500
               },
@@ -256,8 +256,8 @@
                "param_value": [38, 2, 80],
                "param_names": ["a", "b", "c"],
                "y_iv":        [1.0, 1.0, 1.0],
-               "deq":         ["a * y - a * x + y * z", 
-                               "c * x + y - x * z", 
+               "deq":         ["a * y - a * x + y * z",
+                               "c * x + y - x * z",
                                "x * y -b * z"],
                "t_delta_ini": 0.001,
                "t_max":       80,
@@ -266,8 +266,8 @@
              },
   "lorenz": { "ref":         ["Edward Lorenz (1963); Deterministic Nonperiodic Flow; J. of the Atmospheric Sci;  20 (2); p130-141; zotero://select/items/0_KF722PVR"],
               "param_names": ["sigma", "rho", "beta"],
-              "deq":         ["sigma * (y - x)", 
-                              "x * (rho - z) - y", 
+              "deq":         ["sigma * (y - x)",
+                              "x * (rho - z) - y",
                               "x * y - beta * z"],
               "param_value": [10.0, 28.0, 2.66666666666666666666666666],
               "y_iv":        [0.0, 1.0, 0.0],
@@ -280,8 +280,8 @@
                "param_value": [36.0, 3.0, 17.0],
                "param_names": ["a", "b", "c"],
                "y_iv":        [1.0, 1.0, 30.0],
-               "deq":         ["a * (y - x)", 
-                               "-(x * z) + c * y", 
+               "deq":         ["a * (y - x)",
+                               "-(x * z) + c * y",
                                "x * y - b * z"],
                "t_delta_ini": 0.001,
                "t_max":       100,
@@ -293,7 +293,9 @@
                     "param_value": [2],
                     "param_names": ["a"],
                     "y_iv":        [0.1, 0.0, 0.0],
-                    "deq":         ["y - x", "-z*tanh(x)", "-a+x*y+abs(y)"],
+                    "deq":         ["y - x",
+                                    "-z*tanh(x)",
+                                    "-a+x*y+abs(y)"],
                     "t_max":       500,
                     "vrot":        0,
                     "vtilt":       55
@@ -302,7 +304,9 @@
                "param_value": [0.8, -1.1, -0.45, -1],
                "param_names": ["a", "b", "c", "d"],
                "y_iv":        [0.1, 0.0, 0.0],
-               "deq":         ["y", "z", "a*x+b*y+c*z+d*x*x*x"],
+               "deq":         ["y",
+                               "z",
+                               "a*x+b*y+c*z+d*x*x*x"],
                "t_max":       400,
                "vrot":        105,
                "vtilt":       115
@@ -311,8 +315,10 @@
              "param_value": [9, 14, -0.142857142857, 0.285714285714],
              "param_names": ["a", "b", "m", "n"],
              "y_iv":        [0.0, 0.0, 0.001],
-             "deq":         ["9*y - 9*n*x - 9*(m - n)*(abs(x + 1) - abs(x - 1))/2", "x - y + z", "-14*y"],
+             "deq":         ["9*y - 9*n*x - 9*(m - n)*(abs(x + 1) - abs(x - 1))/2",
+                             "x - y + z",
+                             "-14*y"],
              "t_max":       300,
              "vrot":        90
-             }
+           }
 }
