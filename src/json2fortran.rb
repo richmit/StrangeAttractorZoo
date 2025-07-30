@@ -139,7 +139,14 @@ end
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 pDat = Hash.new
 zDat.each do |atNam, atDat|
-  pDat[atNam] = { 'NAME'  => atNam }
+  pDat[atNam] = { 'NAME'  => atNam,
+                  'VROT'  => 45,
+                  'VTILT' => 45 }
+  ['vrot', 'vtilt'].each do |tag|
+    if (atDat.member?(tag)) then
+      pDat[atNam][tag.upcase] = atDat[tag].to_f
+    end
+  end
 end
 
 if (verbose > 1) then
@@ -154,7 +161,10 @@ pDat.each do |atNam, atDat|
     open(ofname, "wb") do |src_file|
       glines.each do |line|
         new_line = line.clone
-        if (variant != 'batch') then
+        if (variant == 'batch') then
+          new_line.gsub(/TWIDTH/, '5.0')
+        else
+          new_line.gsub(/TWIDTH/, '10.0')
           new_line.gsub!(/^SaveScreenshot.*$/, '')
           new_line.gsub!(/^ExportView.*$/, '')
         end
@@ -171,17 +181,33 @@ end
 open("#{tgroup}.mk", "wb") do |mk_file|
 
   mk_file.puts('# ' + ('-' * 200))
+  mk_file.puts( "#{tgroup}_csv=".upcase        + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.csv"       }.join(' ')))
+  mk_file.puts( "#{tgroup}_f90=".upcase        + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.f90"       }.join(' ')))
+  mk_file.puts( "#{tgroup}_gplt=".upcase       + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.gplt"      }.join(' ')))
+  mk_file.puts( "#{tgroup}_vtu=".upcase        + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.vtu"       }.join(' ')))
+  mk_file.puts( "#{tgroup}_gp_png=".upcase     + (fDat.keys.map { |atNam| "#{tgroup}_gp_#{atNam}.png"    }.join(' ')))
+  mk_file.puts( "#{tgroup}_pv_png=".upcase     + (fDat.keys.map { |atNam| "#{tgroup}_pv_#{atNam}.png"    }.join(' ')))
+  mk_file.puts( "#{tgroup}_py=".upcase         + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.py"        }.join(' ')))
+  mk_file.puts( "#{tgroup}_batch_py=".upcase   + (fDat.keys.map { |atNam| "#{tgroup}_batch_#{atNam}.py"  }.join(' ')))
+  mk_file.puts( "#{tgroup}_html=".upcase       + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.html"      }.join(' ')))
+  mk_file.puts( "#{tgroup}_vtkjs=".upcase      + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.vtkjs"     }.join(' ')))
+  mk_file.puts('# ' + ('-' * 200))
+  mk_file.puts
+  mk_file.puts
+
+  mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("# Clean everything for #{tgroup}")
   mk_file.puts(".PHONY: #{tgroup}_clean")
   mk_file.puts( "#{tgroup}_clean :")
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.csv"       }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.f90"       }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.gplt"      }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.png"       }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.py"        }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_batch_#{atNam}.py"  }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.html"      }.join(' ')))
-  mk_file.puts( "\trm -f " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.vtkjs"     }.join(' ')))
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_csv)".upcase      )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_f90)".upcase      )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_gplt)".upcase     )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_gp_png)".upcase   )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_pv_png)".upcase   )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_py)".upcase       )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_batch_py)".upcase )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_html)".upcase     )
+  mk_file.puts( "\trm -f " + "$(#{tgroup}_vtkjs)".upcase    )
 
   mk_file.puts( "\trm -f #{tgroup}.mk")
   mk_file.puts
@@ -189,36 +215,36 @@ open("#{tgroup}.mk", "wb") do |mk_file|
   mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("# Build all .csv files for #{tgroup}")
   mk_file.puts(".PHONY: #{tgroup}_csv")
-  mk_file.puts( "#{tgroup}_csv : " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.csv" }.join(' ')))
+  mk_file.puts( "#{tgroup}_csv : " + "$(#{tgroup}_csv)".upcase)
   mk_file.puts
 
   mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("# Build all .vtu files for #{tgroup}")
   mk_file.puts(".PHONY: #{tgroup}_vtu")
-  mk_file.puts( "#{tgroup}_vtu : " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.vtu" }.join(' ')))
+  mk_file.puts( "#{tgroup}_vtu : " + "$(#{tgroup}_vtu)".upcase)
   mk_file.puts
 
   mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("# Build all .png files for #{tgroup}")
   mk_file.puts(".PHONY: #{tgroup}_gp_png")
-  mk_file.puts( "#{tgroup}_gp_png : " + (fDat.keys.map { |atNam| "#{tgroup}_gp_#{atNam}.png" }.join(' ')))
+  mk_file.puts( "#{tgroup}_gp_png : " + "$(#{tgroup}_gp_png)".upcase)
   mk_file.puts
 
   mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("# Build all .png files for #{tgroup}")
   mk_file.puts(".PHONY: #{tgroup}_pv_png")
-  mk_file.puts( "#{tgroup}_pv_png : " + (fDat.keys.map { |atNam| "#{tgroup}_pv_#{atNam}.png" }.join(' ')))
+  mk_file.puts( "#{tgroup}_pv_png : " + "$(#{tgroup}_pv_png)".upcase)
   mk_file.puts
 
   mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("# Build all .f90 files for #{tgroup}")
   mk_file.puts(".PHONY: #{tgroup}_f90")
-  mk_file.puts( "#{tgroup}_f90 : " + (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.f90" }.join(' ')))
+  mk_file.puts( "#{tgroup}_f90 : " + "$(#{tgroup}_f90)".upcase)
   mk_file.puts
 
   mk_file.puts('# ' + ('-' * 200))
   mk_file.puts("#All .f90 rules for #{tgroup}")
-  mk_file.puts( (fDat.keys.map { |atNam| "#{tgroup}_#{atNam}.f90" }.join(' ')) + " &: #{tgroup}_template.py #{tgroup}_template.gplt #{tgroup}_template.f90 zoo.json json2fortran.rb")
+  mk_file.puts( "$(#{tgroup}_f90)".upcase + " &: #{tgroup}_template.py #{tgroup}_template.gplt #{tgroup}_template.f90 zoo.json json2fortran.rb")
   mk_file.puts("\truby json2fortran.rb")
   mk_file.puts
 

@@ -114,10 +114,6 @@ lorenz \\
 #+ATTR_HTML: :align center
 [[file:pv/curve_lorenz.html][file:pics/pv/curve_pv_lorenz.png]] \\ 
 ----------
-moore_spiegel \\
-#+ATTR_HTML: :align center
-[[file:pv/curve_moore_spiegel.html][file:pics/pv/curve_pv_moore_spiegel.png]] \\ 
-----------
 newton_leipnik \\
 #+ATTR_HTML: :align center
 [[file:pv/curve_newton_leipnik.html][file:pics/pv/curve_pv_newton_leipnik.png]] \\ 
@@ -173,10 +169,6 @@ wang_sun \\
 wimol_banlue \\
 #+ATTR_HTML: :align center
 [[file:pv/curve_wimol_banlue.html][file:pics/pv/curve_pv_wimol_banlue.png]] \\ 
-----------
-yu_wang \\
-#+ATTR_HTML: :align center
-[[file:pv/curve_yu_wang.html][file:pics/pv/curve_pv_yu_wang.png]] \\ 
 ----------
 #+END_CENTER
 

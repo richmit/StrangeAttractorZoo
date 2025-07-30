@@ -36,6 +36,7 @@
 
 # import the simple paraview module 
 from paraview.simple import *
+import math
 
 # disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
@@ -53,16 +54,16 @@ renderView1 = GetActiveViewOrCreate('RenderView')
 curveMJRDisplay = Show(curveMJR, renderView1, 'UnstructuredGridRepresentation')
 
 # trace defaults for the display properties.
-curveMJRDisplay.Representation = 'Surface'
+curveMJRDisplay.Representation = 'Wireframe'
 
-# reset view to fit data
-renderView1.ResetCamera(False, 0.9)
+# Properties modified on curveMJRDisplay
+curveMJRDisplay.LineWidth = 4.0
 
-# get the material library
-materialLibrary1 = GetMaterialLibrary()
+# Properties modified on curveMJRDisplay
+curveMJRDisplay.RenderLinesAsTubes = 1
 
-# update the view to ensure updated data information
-renderView1.Update()
+# Remove orientation axis
+renderView1.OrientationAxesVisibility = 1
 
 # set scalar coloring
 ColorBy(curveMJRDisplay, ('POINTS', 'time'))
@@ -70,48 +71,32 @@ ColorBy(curveMJRDisplay, ('POINTS', 'time'))
 # rescale color and/or opacity maps used to include current data range
 curveMJRDisplay.RescaleTransferFunctionToDataRange(True, False)
 
-# show color bar/color legend
-curveMJRDisplay.SetScalarBarVisibility(renderView1, True)
+# No color bar/color legend
+curveMJRDisplay.SetScalarBarVisibility(renderView1, False)
 
-# get color transfer function/color map for 'time'
-timeLUT = GetColorTransferFunction('time')
+# update the view to populate GetDataInformation()
+renderView1.Update()
 
-# get opacity transfer function/opacity map for 'time'
-timePWF = GetOpacityTransferFunction('time')
-
-# get 2D transfer function for 'time'
-timeTF2D = GetTransferFunction2D('time')
-
-# change representation type
-curveMJRDisplay.SetRepresentationType('Wireframe')
-
-# Properties modified on curveMJRDisplay
-curveMJRDisplay.LineWidth = 10.0
-
-# Properties modified on curveMJRDisplay
-curveMJRDisplay.RenderLinesAsTubes = 1
-
-# reset view to fit data
-renderView1.ResetCamera(False, 0.9)
-
-# get layout
-layout1 = GetLayout()
-
-#--------------------------------
-# save layout/tab size in pixels
-layout1.SetSize(2092, 1354)
+# Get the bounding box
+bounds = curveMJR.GetDataInformation().GetBounds()
 
 #-----------------------------------
 # Setup camera placement for view
-renderView1.CameraPosition = [1, 1, 1]
-renderView1.CameraFocalPoint = [0, 0, 0]
+x = 2 * max(bounds[1]-bounds[0], bounds[3]-bounds[2], bounds[5]-bounds[4])
+y = 0
+z = 0
+x, y = x*math.cos(math.pi*VROT/180)-y*math.sin(math.pi*VROT/180), x*math.sin(math.pi*VROT/180)+y*math.cos(math.pi*VROT/180)
+x, z = x*math.cos(math.pi*VTILT/180)-z*math.sin(math.pi*VTILT/180), x*math.sin(math.pi*VTILT/180)+z*math.cos(math.pi*VTILT/180)
+renderView1.CameraPosition = [x+(bounds[1]+bounds[0])/2, y, z+(bounds[5]+bounds[4])/2]
+renderView1.CameraFocalPoint = [(bounds[1]+bounds[0])/2, (bounds[3]+bounds[2])/2, (bounds[5]+bounds[4])/2]
 renderView1.CameraViewUp = [0, 0, 1]
-renderView1.CameraParallelScale = 10
+renderView1.CameraParallelScale = 1
 
-renderView1.ResetCamera()
+renderView1.ResetCamera(False, 0.9)
 
-# Render all views just to make sure they appear on screen
-# RenderAllViews()
+renderView1.Update()
+
+RenderAllViews()
 
 # Save a screenshot with ste resolution and background color
 SaveScreenshot("C:/Users/richmit/MJR/world/my_prog/StrangeAttractorZoo/src/curve_pv_NAME.png", renderView1, ImageResolution=[600, 600])

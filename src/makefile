@@ -50,10 +50,16 @@ include curve.mk
 curve.mk : json2fortran.rb makefile zoo.json
 	ruby json2fortran.rb
 
-docs : curve_pv_png curve_gp_png
-	cp curve_*.vtkjs curve_*.html ../docs/pv/
-	cp curve_pv_*.png ../docs/pics/pv/
-	cp curve_gp_*.png ../docs/pics/gp/	
+deploy : curve_pv_png curve_gp_png
+	rm $(CURVE_BATCH_PY)
+	rm ../docs/pv/*.html
+	rm ../docs/pics/pv/*.png
+	mv $(CURVE_VTKJS) $(CURVE_HTML) ../docs/pv/
+	mv $(CURVE_PV_PNG) ../docs/pics/pv/
+	mv $(CURVE_GP_PNG) ../docs/pics/gp/	
+	mv $(CURVE_CSV)    ../CSVs/
+	mv $(CURVE_VTU)    ../VTUs/
+	mv $(CURVE_PY)     ../VTUs/
 
 ParaViewGlance.html : 
 	wget 'https://kitware.github.io/glance/app/ParaViewGlance.html'

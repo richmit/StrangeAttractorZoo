@@ -62,15 +62,17 @@ digraph {
     "ODE Solver Programs\n(curve_*.f90)" -> "fortran compile/run";
 
     "CSV Data Files\n(curve_*.csv)" [shape="folder"];
-    "GNU Plot Images\n(curve_gp_*.png)" [shape="folder"];
+    "GNUplot Images\n(curve_gp_*.png)" [shape="folder"];
 
     "fortran compile/run" -> "CSV Data Files\n(curve_*.csv)";
-    "GNUplot"             -> "GNU Plot Images\n(curve_gp_*.png)";
+    "GNUplot"             -> "GNUplot Images\n(curve_gp_*.png)";
     "GNUplot Input\n(curve_*.gplt)" -> "GNUplot";
 
     "spaceCurveCSVtoVTU.rb" [shape="box3d"];
 
     "CSV Data Files\n(curve_*.csv)" -> "spaceCurveCSVtoVTU.rb";
+
+    "CSV Data Files\n(curve_*.csv)" -> "GNUplot";
 
     "VTU Data Files\n(curve_*.vtu)" [shape="folder"];
 
@@ -92,29 +94,38 @@ digraph {
     "Paraview Batch\n(curve_batch_*.py)" -> "pvpython";
 
     "Browser" [shape="box3d"];
+    "Emacs" [shape="box3d"];
 
-    "Glance HTML\n(curve_*.html)" -> "Browser";
-    "Glance DATA\n(curve_*.vtkjs)" -> "Browser";
-    "Glance Preview\n(curve_pv_*.png)" -> "Browser";
+    "Glance HTML\n(curve_*.html)" -> "Emacs";
+    "Glance DATA\n(curve_*.vtkjs)" -> "Emacs";
+    "Glance Preview\n(curve_pv_*.png)" -> "Emacs";
 
     "Paraview" [shape="box3d"];
 
     "Paraview Interactive\n(curve_*.py)" -> "Paraview"
     "VTU Data Files\n(curve_*.vtu)" -> "Paraview";
 
-    "nomacs" [shape="box3d"];
-    "GNU Plot Images\n(curve_gp_*.png)" -> "nomacs";
+   "ZOO Web Page\n(index.html)" [shape="note"];
+
 
     { rank = min;  "ODE Solver Template\n(curve_template.f90)"; "GNUplot Template\n(curve_template.gplt)"; "Paraview Template\n(curve_template.py)"; "ZOO JSON\n(zoo.json)" }
     { rank = same; "json2fortran.rb"; }
-    { rank = same;  "MRKISS\n(github.com/richmit/)"; "ODE Solver Programs\n(curve_*.f90)"; "GNUplot Input\n(curve_*.gplt)"; "Paraview Batch\n(curve_batch_*.py)"; "Paraview Glance\n(ParaViewGlance.html)"; "Paraview Interactive\n(curve_*.py)"; }
-    { rank = same; "fortran compile/run"; "GNUplot"; }
-    { rank = same; "CSV Data Files\n(curve_*.csv)"; "GNU Plot Images\n(curve_gp_*.png)"; }
-    { rank = same; "spaceCurveCSVtoVTU.rb"; }
-    { rank = same; "VTU Data Files\n(curve_*.vtu)"; }
+    { rank = same;  "MRKISS\n(github.com/richmit/)"; "ODE Solver Programs\n(curve_*.f90)"; "GNUplot Input\n(curve_*.gplt)"; "Paraview Batch\n(curve_batch_*.py)"; "Paraview Interactive\n(curve_*.py)"; }
+    { rank = same; "Paraview Glance\n(ParaViewGlance.html)"; "pvpython"; }
+    { rank = same; "fortran compile/run"; }
+    { rank = same; "CSV Data Files\n(curve_*.csv)"; }
+    { rank = same; "spaceCurveCSVtoVTU.rb"; "GNUplot"; }
+    { rank = same; "VTU Data Files\n(curve_*.vtu)"; "GNUplot Images\n(curve_gp_*.png)"; }
     { rank = same; "Glance HTML\n(curve_*.html)"; "Glance DATA\n(curve_*.vtkjs)"; "Glance Preview\n(curve_pv_*.png)"; }
+    {rank = same;     "org-mode"; "Emacs"; }
+    { rank = max;  "Browser"; "Paraview";  }
 
-    { rank = max;  "Browser"; "Paraview"; "nomacs" }
+    "org-mode" [shape="component"];
+    "org-mode" -> "Emacs"
+
+   "Emacs" -> "ZOO Web Page\n(index.html)";
+
+   "ZOO Web Page\n(index.html)" -> "Browser";
 
     "ODE Solver Template\n(curve_template.f90)" -> "json2fortran.rb";
     "GNUplot Template\n(curve_template.gplt)" -> "json2fortran.rb";
