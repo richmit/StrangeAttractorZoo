@@ -6,14 +6,20 @@ The zoo is here https://richmit.github.io/StrangeAttractorZoo/
 
 If you are interested in writing your own code, then you can find
 things like attractor formulas, initial values, and integration ranges
-in this JSON file:
+in the
+[[https://github.com/richmit/StrangeAttractorZoo/blob/main/src/zoo.json][zoo.json]]
+file.
 
-https://github.com/richmit/StrangeAttractorZoo/blob/main/src/zoo.json
+If you would like to play with curve data, you can find simple CSV files in the
+[[https://github.com/richmit/StrangeAttractorZoo/tree/main/CSVs][CSVs/]] directory.
 
-If you would like to play with curve data, you can find
-[[https://github.com/richmit/StrangeAttractorZoo/tree/main/CSVs][CSVs/]]
-and
-[[https://github.com/richmit/StrangeAttractorZoo/tree/main/VTUs][VTUs/]].
+If you would like to explore the curves with a VTK capable viewer,
+then you can find VTU files in the
+[[https://github.com/richmit/StrangeAttractorZoo/tree/main/VTUs][VTUs/]]
+directory.  That directory also contains a ParaView Python file for
+each VTU file.  Simply run ParaView with the python file as it's only
+argument, and ParaView should load up the VTU file and set the view
+properly.
 
 The build system to create the web page is in the
 [[https://github.com/richmit/StrangeAttractorZoo/tree/main/src][src/]]
