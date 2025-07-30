@@ -40,7 +40,7 @@ their system.  First let's take a look at the overall data flow:
 
 #+BEGIN_SRC dot :file ./pics/dataflow.svg  :cmdline -Kdot -Tsvg
 digraph {
-
+ rankdir="BTLR"
     "ODE Solver Template\n(curve_template.f90)" [shape="note"];
     "GNUplot Template\n(curve_template.gplt)" [shape="note"];
     "Paraview Template\n(curve_template.py)" [shape="note"];
@@ -83,7 +83,6 @@ digraph {
     "Glance HTML\n(curve_*.html)" [shape="folder"];
     "Glance DATA\n(curve_*.vtkjs)" [shape="folder"];
     "Glance Preview\n(curve_pv_*.png)" [shape="folder"];
-
     
     "pvpython" -> "Glance HTML\n(curve_*.html)";
     "pvpython" -> "Glance DATA\n(curve_*.vtkjs)";
@@ -94,7 +93,13 @@ digraph {
     "Paraview Batch\n(curve_batch_*.py)" -> "pvpython";
 
     "Browser" [shape="box3d"];
+
+    "org-mode" [shape="component"];
     "Emacs" [shape="box3d"];
+    "dev.org" [shape="note"];
+
+    "org-mode" -> "Emacs";
+    "dev.org" -> "Emacs";
 
     "Glance HTML\n(curve_*.html)" -> "Emacs";
     "Glance DATA\n(curve_*.vtkjs)" -> "Emacs";
@@ -107,7 +112,6 @@ digraph {
 
    "ZOO Web Page\n(index.html)" [shape="note"];
 
-
     { rank = min;  "ODE Solver Template\n(curve_template.f90)"; "GNUplot Template\n(curve_template.gplt)"; "Paraview Template\n(curve_template.py)"; "ZOO JSON\n(zoo.json)" }
     { rank = same; "json2fortran.rb"; }
     { rank = same;  "MRKISS\n(github.com/richmit/)"; "ODE Solver Programs\n(curve_*.f90)"; "GNUplot Input\n(curve_*.gplt)"; "Paraview Batch\n(curve_batch_*.py)"; "Paraview Interactive\n(curve_*.py)"; }
@@ -116,12 +120,9 @@ digraph {
     { rank = same; "CSV Data Files\n(curve_*.csv)"; }
     { rank = same; "spaceCurveCSVtoVTU.rb"; "GNUplot"; }
     { rank = same; "VTU Data Files\n(curve_*.vtu)"; "GNUplot Images\n(curve_gp_*.png)"; }
-    { rank = same; "Glance HTML\n(curve_*.html)"; "Glance DATA\n(curve_*.vtkjs)"; "Glance Preview\n(curve_pv_*.png)"; }
-    {rank = same;     "org-mode"; "Emacs"; }
+    { rank = same; "Glance HTML\n(curve_*.html)"; "Glance DATA\n(curve_*.vtkjs)"; "Glance Preview\n(curve_pv_*.png)"; "dev.org";}
+    { rank = same;  "org-mode"; "Emacs"; }
     { rank = max;  "Browser"; "Paraview";  }
-
-    "org-mode" [shape="component"];
-    "org-mode" -> "Emacs"
 
    "Emacs" -> "ZOO Web Page\n(index.html)";
 
