@@ -96,10 +96,10 @@ digraph {
 
     "org-mode" [shape="component"];
     "Emacs" [shape="box3d"];
-    "dev.org" [shape="note"];
+    "index.org" [shape="note"];
 
     "org-mode" -> "Emacs";
-    "dev.org" -> "Emacs";
+    "index.org" -> "Emacs";
 
     "Glance HTML\n(curve_*.html)" -> "Emacs";
     "Glance DATA\n(curve_*.vtkjs)" -> "Emacs";
@@ -120,7 +120,7 @@ digraph {
     { rank = same; "CSV Data Files\n(curve_*.csv)"; }
     { rank = same; "spaceCurveCSVtoVTU.rb"; "GNUplot"; }
     { rank = same; "VTU Data Files\n(curve_*.vtu)"; "GNUplot Images\n(curve_gp_*.png)"; }
-    { rank = same; "Glance HTML\n(curve_*.html)"; "Glance DATA\n(curve_*.vtkjs)"; "Glance Preview\n(curve_pv_*.png)"; "dev.org";}
+    { rank = same; "Glance HTML\n(curve_*.html)"; "Glance DATA\n(curve_*.vtkjs)"; "Glance Preview\n(curve_pv_*.png)"; "index.org";}
     { rank = same;  "org-mode"; "Emacs"; }
     { rank = max;  "Browser"; "Paraview";  }
 

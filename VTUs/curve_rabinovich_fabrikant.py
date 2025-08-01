@@ -42,7 +42,7 @@ import math
 paraview.simple._DisableFirstRenderCameraReset()
 
 # create a new 'XML Unstructured Grid Reader'
-curveMJR = XMLUnstructuredGridReader(registrationName='curve_rabinovich_fabrikant.vtu', FileName=['C:\\Users\\richmit\\MJR\\world\\my_prog\\StrangeAttractorZoo\\src\\curve_rabinovich_fabrikant.vtu'])
+curveMJR = XMLUnstructuredGridReader(registrationName='curve_rabinovich_fabrikant.vtu', FileName=['C:\\Users\\richmit\\MJR\\world\\my_prog\\StrangeAttractorZoo\\VTUs\\curve_rabinovich_fabrikant.vtu'])
 
 # Properties modified on curveMJR
 curveMJR.TimeArray = 'None'
@@ -66,7 +66,10 @@ curveMJRDisplay.RenderLinesAsTubes = 1
 renderView1.OrientationAxesVisibility = 1
 
 # set scalar coloring
-ColorBy(curveMJRDisplay, ('POINTS', 'time'))
+#ColorBy(curveMJRDisplay, ('POINTS', 'time'))
+
+# set scalar coloring
+ColorBy(curveMJRDisplay, ('POINTS', 'derivative', 'Magnitude'))
 
 # rescale color and/or opacity maps used to include current data range
 curveMJRDisplay.RescaleTransferFunctionToDataRange(True, False)

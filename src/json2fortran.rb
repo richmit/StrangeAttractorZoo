@@ -167,6 +167,7 @@ pDat.each do |atNam, atDat|
           new_line.gsub(/TWIDTH/, '10.0')
           new_line.gsub!(/^SaveScreenshot.*$/, '')
           new_line.gsub!(/^ExportView.*$/, '')
+          new_line.sub!(/src/, 'VTUs')
         end
         atDat.each do |tag, val|
           new_line.gsub!(tag, val.to_s)
@@ -257,7 +258,7 @@ open("#{tgroup}.mk", "wb") do |mk_file|
     mk_file.puts("\t./#{tgroup}_#{atNam}$(EXE_SUFFIX)")
     mk_file.puts
     mk_file.puts("#{tgroup}_#{atNam}.vtu : #{tgroup}_#{atNam}.csv")
-    mk_file.puts("\t$(CSV_2_VTU) #{tgroup}_#{atNam}.csv points:3:4:5 time:2 > #{tgroup}_#{atNam}.vtu")
+    mk_file.puts("\t$(CSV_2_VTU) #{tgroup}_#{atNam}.csv points:3:4:5 time:2 derivative:6:7:8 > #{tgroup}_#{atNam}.vtu")
     mk_file.puts
     mk_file.puts("#{tgroup}_gp_#{atNam}.png : #{tgroup}_#{atNam}.csv")
     mk_file.puts("\tgnuplot -p #{tgroup}_#{atNam}.gplt")
