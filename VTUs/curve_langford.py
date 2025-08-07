@@ -42,7 +42,7 @@ import math
 paraview.simple._DisableFirstRenderCameraReset()
 
 # create a new 'XML Unstructured Grid Reader'
-curveMJR = XMLUnstructuredGridReader(registrationName='curve_langford.vtu', FileName=['C:\\Users\\richmit\\MJR\\world\\my_prog\\StrangeAttractorZoo\\src\\curve_langford.vtu'])
+curveMJR = XMLUnstructuredGridReader(registrationName='curve_langford.vtu', FileName=['C:\\Users\\richmit\\MJR\\world\\my_prog\\StrangeAttractorZoo\\VTUs\\curve_langford.vtu'])
 
 # Properties modified on curveMJR
 curveMJR.TimeArray = 'None'
