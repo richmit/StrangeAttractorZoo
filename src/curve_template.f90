@@ -35,7 +35,7 @@
 !----------------------------------------------------------------------------------------------------------------------------------
 program curve_NAME
   use, intrinsic :: iso_fortran_env,          only: output_unit, error_unit
-  use            :: mrkiss_config,            only: rk, ik, t_delta_tiny
+  use            :: mrkiss_config,            only: rk, ik, istats_size
   use            :: mrkiss_solvers_nt,        only: steps_fixed_stab_nt
   use            :: mrkiss_utils,             only: print_solution
   use            :: mrkiss_eerk_fehlberg_7_8, only: a, b=>b2, c
@@ -51,7 +51,7 @@ program curve_NAME
   real(kind=rk),  parameter :: t_min         = T_MIN
 
   real(kind=rk)             :: solution(1+2*deq_dim, num_points)
-  integer(kind=ik)          :: status, istats(16)
+  integer(kind=ik)          :: status, istats(istats_size)
   integer                   :: c_beg, c_end, c_rate
 
   call system_clock(count_rate=c_rate)
