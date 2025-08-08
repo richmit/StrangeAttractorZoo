@@ -124,11 +124,11 @@
              },
   "langford": { "ref":         ["Langford (1983); Numerical studies of torus bifurcations; Numerical methods for  bifurcation problems; p. 285-295"],
                 "param_value": [0.95, 0.7, 0.6, 3.5, 0.25, 0.1],
-                "param_names": ["alpha", "beta", "lmbda", "omega", "rho", "epsilon"],
+                "param_names": ["alpha", "beta", "lambda", "omega", "rho", "epsilon"],
                 "y_iv":        [0.1, 0.0, 0.0],
                 "deq":         ["(z - beta) * x - omega * y",
                                 "omega * x + (z - beta) * y",
-                                "lmbda + alpha * z - (z**3 / 3) - (x**2 + y**2) * (1 + rho * z) + epsilon * z * x**3"],
+                                "lambda + alpha * z - (z**3 / 3) - (x**2 + y**2) * (1 + rho * z) + epsilon * z * x**3"],
                 "t_max":       200
               },
   "newton_leipnik": { "ref":         ["Leipnik & Newton (1981); Double strange attractors in rigid body motion with linear feedback control; Phys. Lett; p63-67"],
